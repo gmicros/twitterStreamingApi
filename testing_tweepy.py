@@ -76,7 +76,7 @@ def extractLinkFromTweet(tweet):
     return link
 
 def extractLink(text):
-        regex = r'https?://t.co/\S{10,10}'
+        regex = r'https?://t.co/[^\s]+'
         match = re.search(regex, text)
         if match:
             return match.group()
