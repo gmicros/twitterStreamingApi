@@ -51,6 +51,7 @@ def getAllTheFinalURI(links):
     for link in links:
         try:
             uri = getFinalURI(link)
+            print uri
             uris.append(uri)
         except:
             i = 0            
@@ -59,7 +60,7 @@ def getAllTheFinalURI(links):
 def getFinalURI(link):
     try:
         url = urllib.urlopen(link)
-        return url
+        return url.geturl()
     except:
         return ""        
 
@@ -79,7 +80,7 @@ def extractLinkFromTweet(tweet):
     return link
 
 def extractLink(text):
-        regex = r'https?://t.co/[^\s]*?'
+        regex = r'https?://t.co/[^\s]*'
         match = re.search(regex, text)
         if match:
             return match.group()
