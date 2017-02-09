@@ -49,8 +49,11 @@ def saveUris(uris, filename):
 def getAllTheFinalURI(links):
     uris = []
     for link in links:
-        uri = getFinalURI(link)
-        uris.append(uri)
+        try:
+            uri = getFinalURI(link)
+            uris.append(uri)
+        except:
+            i = 0            
     return uris
 
 def getFinalURI(link):
@@ -76,7 +79,7 @@ def extractLinkFromTweet(tweet):
     return link
 
 def extractLink(text):
-        regex = r'https?://t.co/[^\s]+'
+        regex = r'https?://t.co/[^\s]*?'
         match = re.search(regex, text)
         if match:
             return match.group()
